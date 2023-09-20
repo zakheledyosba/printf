@@ -1,4 +1,5 @@
 #include "main.h"
+<<<<<<< HEAD
 
 void print_buffer(char buffer[], int *buff_ind);
 
@@ -59,3 +60,66 @@ void print_buffer(char buffer[], int *buff_ind)
 	*buff_ind > 0;
 }
 
+=======
+#include <stdio.h>
+#include <stdarg.h>
+
+
+/*
+ * _printf -"Receives the main string and all the necessary parameters to
+ * print a formated string
+ * @format: A string containing all the desired characters"
+ * Return: A total count of the characters printed
+ */
+
+int _printf(const char *format, ...)
+{
+	va_list args;
+
+	va_start(args, format);
+
+	int count = 0;
+
+	while (format)
+	{
+		if (format != '%')
+		{
+			putchar(format);
+			count++;
+		}
+		else
+		{
+			format++;
+
+			switch (format)
+			{
+				case 'c':
+			
+					char c = va_arg(args, int);
+					putchar(c);
+					count++;
+					break;
+
+				case 's':
+					char *s = va_arg(args, char *);
+					putchar(*s);
+					*s++;
+					count++;
+					break;
+
+				case '%':
+					putchar('%');
+					count++;
+
+			defualt:
+					putchar('%');
+					putchar(format);
+					count += 2;
+			}
+		}
+		format++;
+	}
+	va_end(args);
+	return count;
+}
+>>>>>>> 7e84e76ea831d3229bfd827af921bdda910efb61
