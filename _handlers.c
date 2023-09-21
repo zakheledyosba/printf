@@ -1,6 +1,7 @@
 #include "main.h"
 #include <limits.h>
 
+
 /**
  * handle_write_char - Prints a string
  * @c: char types.
